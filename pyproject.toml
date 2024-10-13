@@ -38,10 +38,15 @@ dynamic = ["version"]
 [project.optional-dependencies]
 
 tfpwa = ["tfpwa@git+https://github.com/jiangyi15/tf-pwa"]
+compwa = [
+    "qrules",
+    "ampform",
+    "tensorwaves[phsp]",
+]
 pyhf = [
     "pyhf",
 ]
-all = ["zfit-physics[tfpwa,pyhf]"]
+all = ["zfit-physics[tfpwa,pyhf,compwa]"]
 test = [
     "pytest",
     "pytest-cov",
@@ -50,6 +55,10 @@ test = [
     "zfit-physics[all]",
     "contextlib_chdir", # backport of chdir from Python 3.11
 ]
+
+
+
+
 dev = [
     "bumpversion>=0.5.3",
     "coverage>=4.5.1",
