@@ -44,4 +44,4 @@ def nll_from_pyhf(data, pdf, *, params=None, init_pars=None, par_bounds=None, fi
         params = np.asarray(params)
         return mle.twice_nll(params, data, pdf) * errordef
 
-    return zfit.loss.SimpleLoss(func=nll_func, params=params, errordef=errordef)
+    return zfit.loss.SimpleLoss(func=nll_func, params=params, errordef=errordef, gradient="num", jit=False)
