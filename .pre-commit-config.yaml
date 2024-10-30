@@ -72,8 +72,8 @@ repos:
     rev: '0.50'
     hooks:
       - id: check-manifest
-        stages:
-          - manual
+        args:
+          - --update
   - repo: https://github.com/sondrelg/pep585-upgrade
     rev: v1.0
     hooks:

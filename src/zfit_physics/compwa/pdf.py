@@ -25,7 +25,7 @@ class ComPWAPDF(zfit.pdf.BasePDF):
         if obs is None:
             obs = obs_from_frame(norm.to_pandas())
         norm = norm.with_obs(obs)
-        super().__init__(obs, params=params, name=name, extended=extended)
+        super().__init__(obs, params=params, name=name, extended=extended, autograd_params=[])
         self.intensity = intensity
         norm = {ob: znp.array(ar) for ob, ar in zip(self.obs, z.unstack_x(norm))}
         self.norm_sample = norm
@@ -46,7 +46,7 @@ class ComPWAPDF(zfit.pdf.BasePDF):
                 paramvalsfloat.append(val)
                 paramvalscomplex.append(znp.zeros_like(val, dtype=znp.complex128))
 
-        def unnormalized_pdf(x, paramvalsfloat, paramvalscomplex):
+        def unnormalized_pdf_helper(x, paramvalsfloat, paramvalscomplex):
             data = {ob: znp.array(ar) for ob, ar in zip(self.obs, x)}
             paramsinternal = {
                 n: c if isc else f for n, f, c, isc in zip(params.keys(), paramvalsfloat, paramvalscomplex, iscomplex)
@@ -56,20 +56,27 @@ class ComPWAPDF(zfit.pdf.BasePDF):
 
         xunstacked = z.unstack_x(x)
 
-        probs = tf.numpy_function(unnormalized_pdf, [xunstacked, paramvalsfloat, paramvalscomplex], Tout=tf.float64)
+        probs = tf.numpy_function(
+            unnormalized_pdf_helper, [xunstacked, paramvalsfloat, paramvalscomplex], Tout=tf.float64
+        )
         if norm is not False:
             normvalues = [znp.asarray(self.norm_sample[ob]) for ob in self.obs]
             normval = (
                 znp.mean(
-                    tf.numpy_function(unnormalized_pdf, [normvalues, paramvalsfloat, paramvalscomplex], Tout=tf.float64)
+                    tf.numpy_function(
+                        unnormalized_pdf_helper, [normvalues, paramvalsfloat, paramvalscomplex], Tout=tf.float64
+                    )
                 )
-                * norm.volume
+                * znp.array([1.0])  # HACK: ComPWA just uses 1 as the phase space volume, better solution?
+                # norm.volue is very small, since as it's done now (autoconverting in init), there are variables like
+                # masses that have a tiny space, so the volume is very small
+                # * norm.volume
             )
             normval.set_shape((1,))
             probs /= normval
         probs.set_shape([None])
         return probs
 
-    @z.function(wraps="tensorwaves")
-    def _jitted_normalization(self, norm, params):
-        return znp.mean(self._jitted_unnormalized_pdf(norm, params=params))
+    # @z.function(wraps="tensorwaves")
+    # def _jitted_normalization(self, norm, params):
+    #     return znp.mean(self._jitted_unnormalized_pdf(norm, params=params))

@@ -13,11 +13,15 @@ if TYPE_CHECKING:
     from zfit.core.interfaces import ZfitLoss
 
 
-def nll_from_estimator(estimator: Estimator, *, params=None, errordef=None) -> ZfitLoss:
+def nll_from_estimator(estimator: Estimator, *, params=None, errordef=None, numgrad=None) -> ZfitLoss:
     r"""Create a negative log-likelihood function from a tensorwaves estimator.
 
     Args:
         estimator: An estimator object that computes a scalar loss function.
+        params: A list of zfit parameters that the loss function depends on.
+        errordef: The error definition of the loss function.
+        numgrad: If True, the gradient of the loss function is computed numerically and the ComPWA estimators
+            gradient method is not used. Can be useful as not all backends in ComPWA support gradients.
 
     Returns:
         A zfit loss function that can be used with zfit.
@@ -41,9 +45,13 @@ def nll_from_estimator(estimator: Estimator, *, params=None, errordef=None) -> Z
         paramdict = dict(zip(paramnames, params))
         return estimator(paramdict)
 
-    def grad(params):
-        paramdict = dict(zip(paramnames, params))
-        return estimator.gradient(paramdict)
+    if numgrad:
+        grad = None
+    else:
+
+        def grad(params):
+            paramdict = dict(zip(paramnames, params))
+            return estimator.gradient(paramdict)
 
     if errordef is None:
         if hasattr(estimator, "errordef"):
