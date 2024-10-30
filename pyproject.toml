@@ -117,6 +117,14 @@ report.exclude_also = [
     'if typing.TYPE_CHECKING:',
 ]
 
+[tool.check-manifest]
+ignore = [
+    ".tox/*",
+    "*/test*",
+    "*/__init__.py",
+    "*/_version.py",
+]
+
 [tool.mypy]
 files = ["src", "tests"]
 python_version = "3.8"
