@@ -31,17 +31,7 @@ def create_amplitude():
         model_builder.set_dynamics(name, create_relativistic_breit_wigner_with_ff)
     model = model_builder.formulate()
 
-    from tensorwaves.data import (TFPhaseSpaceGenerator,
-                                  TFUniformRealNumberGenerator)
 
-    rng = TFUniformRealNumberGenerator(seed=0)
-    phsp_generator = TFPhaseSpaceGenerator(
-        initial_state_mass=reaction.initial_state[-1].mass,
-        final_state_masses={i: p.mass for i, p in reaction.final_state.items()},
-    )
-    # phsp_momenta = phsp_generator.generate(100_000, rng)
-    #
-    # unfolded_expression = model.expression.doit()
 
     return model, reaction
 
@@ -111,7 +101,9 @@ def test_wrapper_simple_compwa():
         symbol
         for symbol in model.parameter_defaults
         if symbol.name in set(initial_parameters)
-    ]
+    ]  # TODO, use this?
+
+    # TODO: cached doesn't really work, but needed?
     # cached_intensity_func, transform_to_cache = create_cached_function(
     #     unfolded_expression,
     #     parameters=model.parameter_defaults,
@@ -132,6 +124,7 @@ def test_wrapper_simple_compwa():
         intensity=intensity,
         norm=pd.DataFrame(phsp).astype(np.float64),  # there are complex numbers in the norm
     )
+
     # pdf = zcompwa.pdf.ComPWAPDF(
     #     intensity=intensity,
     #     norm=phsp_frame,
