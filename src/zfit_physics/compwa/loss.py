@@ -12,6 +12,8 @@ if TYPE_CHECKING:
     from tensorwaves.estimator import Estimator
     from zfit.core.interfaces import ZfitLoss
 
+__all__ = ["nll_from_estimator"]
+
 
 def nll_from_estimator(estimator: Estimator, *, params=None, errordef=None, numgrad=None) -> ZfitLoss:
     r"""Create a negative log-likelihood function from a tensorwaves estimator.

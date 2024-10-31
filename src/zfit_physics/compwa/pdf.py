@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import numpy as np
 import tensorflow as tf
 import zfit  # suppress tf warnings
 import zfit.z.numpy as znp
@@ -8,12 +7,7 @@ from zfit import supports, z
 
 from .variables import obs_from_frame, params_from_intensity
 
-
-def patched_call(self, data, *, params) -> np.ndarray:
-    # extended_data = {**self.__parameters, **data}  # type: ignore[arg-type]
-    if params is not None:
-        self.update_parameters(params)
-    return self.__function(data)  # type: ignore[arg-type]
+__all__ = ["ComPWAPDF"]
 
 
 class ComPWAPDF(zfit.pdf.BasePDF):

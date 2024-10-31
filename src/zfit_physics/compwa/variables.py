@@ -7,6 +7,8 @@ import pandas as pd
 import zfit
 from zfit.core.interfaces import ZfitUnbinnedData
 
+__all__ = ["obs_from_frame", "params_from_intensity"]
+
 
 def params_from_intensity(intensity):
     return [
