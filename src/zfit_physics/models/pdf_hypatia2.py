@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
+
 import numpy as np
 import tensorflow as tf
 import tensorflow_probability as tfp
@@ -322,7 +324,7 @@ class Hypatia2(zfit.pdf.BasePDF):
         )
 
     @zfit.supports(norm=False)
-    def _pdf(self, x: tf.Tensor, norm, params) -> tf.Tensor:
+    def _pdf(self, x: Mapping[int, tf.Tensor], norm, params: Mapping[str, tf.Tensor]) -> tf.Tensor:
         del norm
         x0 = x[0]
         mu = params["mu"]
