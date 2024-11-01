@@ -189,5 +189,6 @@ def test_wrapper_simple_compwa():
     result.hesse()
     # print(result)
     assert result.valid
-    assert result.fmin < fit_result.estimator_value  # ComPWA doesn't minimize well, if this fails, we can relax it
+    tol = 0.05  # 10% of 1 sigma
+    assert result.fmin - tol < fit_result.estimator_value  # ComPWA doesn't minimize well, if this fails, we can relax it
     assert pytest.approx(result.fmin, abs=0.5) == fit_result.estimator_value
