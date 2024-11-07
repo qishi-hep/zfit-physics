@@ -72,8 +72,6 @@ repos:
     rev: '0.50'
     hooks:
       - id: check-manifest
-        language: python
-        pass_filenames: false
         args:
           - --update
   - repo: https://github.com/sondrelg/pep585-upgrade
