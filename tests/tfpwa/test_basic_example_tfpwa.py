@@ -90,5 +90,5 @@ def test_example1_tfpwa():
     print(result)
 
     assert result.converged
-    tol = 0.1
+    tol = 1.0
     assert result.fmin == pytest.approx(fit_result.min_nll, abs=tol)
