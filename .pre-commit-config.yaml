@@ -74,6 +74,7 @@ repos:
       - id: check-manifest
         args:
           - --update
+        additional_dependencies: ["hatch-vcs", "hatchling>=1.17"]
   - repo: https://github.com/sondrelg/pep585-upgrade
     rev: v1.0
     hooks:
