@@ -72,9 +72,10 @@ repos:
     rev: '0.50'
     hooks:
       - id: check-manifest
+        language: python
+        pass_filenames: false
         args:
           - --update
-        additional_dependencies: ["hatch-vcs", "hatchling>=1.17"]
   - repo: https://github.com/sondrelg/pep585-upgrade
     rev: v1.0
     hooks:
