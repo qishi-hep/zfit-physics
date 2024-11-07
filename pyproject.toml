@@ -37,7 +37,6 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 
-tfpwa = ["tfpwa@git+https://github.com/jiangyi15/tf-pwa"]
 compwa = [
     "qrules",
     "ampform",
@@ -46,7 +45,7 @@ compwa = [
 pyhf = [
     "pyhf",
 ]
-all = ["zfit-physics[tfpwa,pyhf,compwa]"]
+all = ["zfit-physics[pyhf,compwa]"]
 test = [
     "pytest",
     "pytest-cov",
