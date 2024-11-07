@@ -2,7 +2,7 @@
 Changelog
 *********
 
-Develop
+0.8.0 (7 Nov 2024)
 ========================
 
 Major Features and Improvements
@@ -11,24 +11,6 @@ Major Features and Improvements
 - `TF-PWA <https://tf-pwa.readthedocs.io/en/latest/>`_ support for loss functions. Minimizer can directly minimize the loss function of a model.
 - `pyhf <https://pyhf.readthedocs.io/en/stable/>`_ support for loss functions. Minimizer can directly minimize the loss function of a model.
 - `ComPWA <https://compwa.github.io/>`_ support for loss functions and pdf. Minimizer can directly minimize the loss function of a model.
-
-Breaking changes
-------------------
-
-Deprecations
--------------
-
-Bug fixes and small changes
----------------------------
-
-Experimental
-------------
-
-Requirement changes
--------------------
-
-Thanks
-------
 
 0.7.0 (13 Apr 2024)
 ===================
