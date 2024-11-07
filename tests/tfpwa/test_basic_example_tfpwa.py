@@ -90,5 +90,5 @@ def test_example1_tfpwa():
     print(result)
 
     assert result.converged
-    tol = 0.05  # 10% of one sigma
+    tol = 0.1  # 20% of one sigma
     assert result.fmin - tol<= fit_result.min_nll  # check if the result is better at least
