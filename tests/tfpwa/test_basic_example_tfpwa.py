@@ -90,5 +90,5 @@ def test_example1_tfpwa():
     print(result)
 
     assert result.converged
-    tol = 0.1  # 20% of one sigma
-    assert result.fmin - tol<= fit_result.min_nll  # check if the result is better at least
+    tol = 0.1
+    assert result.fmin == pytest.approx(fit_result.min_nll, abs=tol)
