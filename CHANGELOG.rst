@@ -10,7 +10,8 @@ Major Features and Improvements
 - add a RooFit compatibility layer and automatically convert losses, also inside minimizers (through ``SimpleLoss.from_any``)
 - `TF-PWA <https://tf-pwa.readthedocs.io/en/latest/>`_ support for loss functions. Minimizer can directly minimize the loss function of a model.
 - `pyhf <https://pyhf.readthedocs.io/en/stable/>`_ support for loss functions. Minimizer can directly minimize the loss function of a model.
-- added Hypatia2 PDF
+- `ComPWA <https://compwa.github.io/>`_ support for loss functions and pdf. Minimizer can directly minimize the loss function of a model.
+- add Hypatia2 PDF
 
 Breaking changes
 ------------------
