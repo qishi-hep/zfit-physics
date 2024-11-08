@@ -68,12 +68,7 @@ repos:
           - pyupgrade
         args:
           - --py39-plus
-  - repo: https://github.com/mgedmin/check-manifest
-    rev: '0.50'
-    hooks:
-      - id: check-manifest
-        args: [--no-build-isolation]
-        additional_dependencies: ['hatch-vcs', 'hatchling>=1.17.1']
+
   - repo: https://github.com/sondrelg/pep585-upgrade
     rev: v1.0
     hooks:
