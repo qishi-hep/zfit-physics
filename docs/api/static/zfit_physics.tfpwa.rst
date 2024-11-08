@@ -10,7 +10,7 @@ Import the module with:
 
     import zfit_physics.tfpwa as ztfpwa
 
-This will enable that :py:function:~`tfpwa.model.FCN` can be used as a loss function in zfit minimizers as
+This will enable that :py:function:`~tfpwa.model.FCN` can be used as a loss function in zfit minimizers as
 
 .. code-block:: python
 
@@ -22,7 +22,7 @@ More explicitly, the loss function can be created with
 
     nll = ztfpwa.loss.nll_from_fcn(fcn)
 
-which optionally takes already created :py:class:~`zfit.core.interfaces.ZfitParameter` as arguments.
+which optionally takes already created :py:class:`~zfit.core.interfaces.ZfitParameter` as arguments.
 
 
 Variables

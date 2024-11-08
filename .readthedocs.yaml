@@ -8,6 +8,8 @@ build:
   os: ubuntu-24.04
   tools:
     python: "3.12"
+  commands:
+    - snap install root-framework --classic
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
@@ -18,4 +20,8 @@ formats: [ ]
 python:
   install:
     - method: pip
-      path: .[dev]
+      path: .
+      extra_requirements:
+          - docs
+    - method: pip
+      path: git+https://github.com/jiangyi15/tf-pwa
