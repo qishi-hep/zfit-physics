@@ -51,7 +51,7 @@ build:
   commands:
     - wget https://root.cern/download/root_v6.30.08.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz -O root.tar.gz
     - tar -xzf root.tar.gz
-    - source root/bin/thisroot.sh
+    - . root/bin/thisroot.sh
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
