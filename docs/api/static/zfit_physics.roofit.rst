@@ -16,6 +16,7 @@ For example via conda:
     :hide-output:
 
     import numpy as np
+    import zfit
     from ROOT import RooArgSet, RooDataSet, RooGaussian, RooRealVar
 
     data = np.random.normal(loc=2.0, scale=3.0, size=1000)
