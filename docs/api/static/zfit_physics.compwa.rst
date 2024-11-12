@@ -9,7 +9,7 @@ Import the module with:
 
     import zfit_physics.compwa as zcompwa
 
-This will enable that :py:function:`~ tensorwaves.estimator.Estimator`, can be used as a loss function in zfit minimizers as
+This will enable that a :py:class:`~ tensorwaves.estimator.Estimator`, for example ``estimator`` in the following, can be used as a loss function in zfit minimizers as
 
 .. code-block:: python
 
