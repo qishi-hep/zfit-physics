@@ -7,4 +7,4 @@ dependencies:
   - root<=6.30
   - uv
   - pip:
-      - .[dev]
+      - ../[dev]
