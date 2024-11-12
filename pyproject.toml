@@ -45,7 +45,10 @@ compwa = [
 pyhf = [
     "pyhf",
 ]
-all = ["zfit-physics[pyhf,compwa]"]
+tfpwa = [
+    "tfpwa>=0.2.2",
+]
+all = ["zfit-physics[pyhf,compwa,tfpwa]"]
 test = [
     "pytest",
     "pytest-cov",

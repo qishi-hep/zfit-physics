@@ -49,8 +49,7 @@ jobs:
         run: |
           which python
           python -V
-          uv pip install -e ".[dev]" tfpwa@git+https://github.com/jiangyi15/tf-pwa
-          uv pip install zfit@git+https://github.com/zfit/zfit
+          uv pip install -e ".[dev]" zfit@git+https://github.com/zfit/zfit
       - name: Test with pytest
         run: |
           ZFIT_DO_JIT=${{ matrix.jit }}
