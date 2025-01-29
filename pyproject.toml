@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling>=1.17.1", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 
@@ -37,7 +37,6 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 
-tfpwa = ["tfpwa@git+https://github.com/jiangyi15/tf-pwa"]
 compwa = [
     "qrules",
     "ampform",
@@ -46,7 +45,10 @@ compwa = [
 pyhf = [
     "pyhf",
 ]
-all = ["zfit-physics[tfpwa,pyhf,compwa]"]
+tfpwa = [
+    "tfpwa>=0.2.2",
+]
+all = ["zfit-physics[pyhf,compwa,tfpwa]"]
 test = [
     "pytest",
     "pytest-cov",
