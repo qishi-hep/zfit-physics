@@ -9,4 +9,4 @@ from .models.pdf_novosibirsk import Novosibirsk
 from .models.pdf_relbw import RelativisticBreitWigner
 from .models.pdf_tsallis import Tsallis
 
-__all__ = ["Argus", "RelativisticBreitWigner", "CMSShape", "Cruijff", "ErfExp", "Novosibirsk", "Tsallis", "Hypatia2"]
+__all__ = ["Argus", "CMSShape", "Cruijff", "ErfExp", "Hypatia2", "Novosibirsk", "RelativisticBreitWigner", "Tsallis"]
